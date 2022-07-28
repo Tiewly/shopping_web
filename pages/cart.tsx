@@ -12,6 +12,25 @@ const Cart = () => {
   const [total, setTotal] = useState(0);
   const [showConfirmModal, closeComfirmModal, status] = useModal(false);
   const [loading, setLoading] = useState(false);
+  const [username, setUsername] = useState("");
+  const [address, setAddress] = useState("");
+  const [phone, setPhone] = useState("");
+
+  function onChangeUsername(e: any) {
+    setUsername(e.target.value);
+  }
+  function onChangeAddress(e: any) {
+    setAddress(e.target.value);
+  }
+  function onChangePhone(e: any) {
+    setPhone(e.target.value);
+  }
+  function onSubmit(e: any) {
+    e.preventDefault();
+    reactLocalStorage.set("username", username);
+    reactLocalStorage.set("address", address);
+    reactLocalStorage.set("phone", phone);
+  }
 
   useEffect(() => {
     const temp = reactLocalStorage.getObject("shopping_web_cart") as
@@ -104,7 +123,7 @@ const Cart = () => {
               " col-md-4 my-3 text-right text-uppercase text-secondary"
             }
           >
-            <form>
+            <form onSubmit={onSubmit}>
               <h2>Shipping & Payment</h2>
               <label htmlFor="name">Name</label>
               <input
@@ -114,6 +133,8 @@ const Cart = () => {
                 required
                 className="form-control mb-2"
                 placeholder="Your name"
+                value={username}
+                onChange={onChangeUsername}
               />
               <label htmlFor="mobile">Phone number</label>
               <input
@@ -123,7 +144,8 @@ const Cart = () => {
                 required
                 className="form-control mb-2"
                 placeholder="Your phone number"
-                // onChange={onChangePhone}
+                value={phone}
+                onChange={onChangePhone}
               />
               <label htmlFor="address">Address</label>
               <input
@@ -133,7 +155,8 @@ const Cart = () => {
                 required
                 className="form-control mb-2"
                 placeholder="Your address"
-                // onChange={onChangeAddress}
+                value={address}
+                onChange={onChangeAddress}
               />
               <h3 className="mt-3 mb-0">
                 Cart Total: <span className="text-danger">${total}</span>
@@ -145,37 +168,16 @@ const Cart = () => {
               <button
                 type="submit"
                 className="btn btn-danger btn-lg w-100"
+                disabled={username === "" || phone === "" || address === ""}
                 onClick={() => {
                   showConfirmModal("Order confirmation?");
                 }}
-                // onClick={() => {
-                // var data = reactLocalStorage.getObject(
-                //   "shopping_web_customer"
-                // ) as CustomerDTO;
-                // if (data) {
-                //   data.push({
-                //     name: data.name,
-                //     address: data.address,
-                //     phone: data.phone,
-                //   });
-                // } else {
-                //   data.push({
-                //     name: " ",
-                //     address: " ",
-                //     phone: " ",
-                //   });
-                // }
-                // reactLocalStorage.setObject("shopping_web_customer", data);
-                // showConfirmModal("Order confirmation?");
-                // console.log(customer);
-                // }}
               >
                 CHECKOUT NOW!
               </button>
             </form>
           </div>
         </div>
-        {/* {JSON.stringify(cart)} */}
       </div>
       <ComfirmModal
         show={status.isOpen}
