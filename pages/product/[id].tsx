@@ -4,7 +4,8 @@ import Link from "next/link";
 import { getProductById } from "../api/product";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import styles from "../../styles/Home.module.css";
+import { reactLocalStorage } from "reactjs-localstorage";
+import Loading from "../../components/Loading";
 
 const DetailProduct = () => {
   const router = useRouter();
@@ -38,7 +39,7 @@ const DetailProduct = () => {
               <h3 className="card-title text-uppercase mb-2">{data.title}</h3>
               <div className="d-flex justify-content-between align-items-center">
                 <h5 className="text-danger mt-1">฿{data.price}</h5>
-                <p className="text-danger mb-0 mx-2">In stock: {data.stock}</p>
+                {/* <p className="text-danger mb-0 mx-2">In stock: {data.stock}</p> */}
               </div>
               <p>{data.description}</p>
               <p>
@@ -48,27 +49,41 @@ const DetailProduct = () => {
                 consequatur quibusdam error! Quod.
               </p>
               <Link href="/cart">
-                <button type="button" className="btn btn-danger">
+                <button
+                  type="button"
+                  className="btn btn-danger"
+                  onClick={() => {
+                    var temp = reactLocalStorage.getObject(
+                      "shopping_web_cart"
+                    ) as CartDTO;
+                    if (temp.products) {
+                      temp.products.push({
+                        id: data.id,
+                        price: data.price,
+                        qty: 1,
+                      });
+                    } else {
+                      temp = {
+                        id: 1,
+                        products: [
+                          {
+                            id: data.id,
+                            price: data.price,
+                            qty: 1,
+                          },
+                        ],
+                      };
+                    }
+                    reactLocalStorage.setObject("shopping_web_cart", temp);
+                  }}
+                >
                   Add to cart
                 </button>
               </Link>
             </div>
           </div>
         ) : (
-          <div>
-            <div className="loadingio-spinner-double-ring-bayv101tgct">
-              <div className="ldio-mavlbdb624">
-                <div></div>
-                <div></div>
-                <div>
-                  <div></div>
-                </div>
-                <div>
-                  <div></div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <Loading />
         )}
       </div>
     </>

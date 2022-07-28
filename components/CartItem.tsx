@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-// import { decrease, increase } from "../store/Actions";
 import Image from "next/image";
 import { getProductById } from "../pages/api/product";
 import { reactLocalStorage } from "reactjs-localstorage";
+import styles from "/styles/Cart.module.css";
+import Loading from "../components/Loading";
 
 interface CartItemProps {
   product: ProductInCartDTO;
@@ -25,80 +26,81 @@ const CartItem: React.FC<CartItemProps> = ({
   }, [product.id]);
 
   return data ? (
-    <tr>
-      <td style={{ width: "100px", overflow: "hidden" }}>
-        <Image
-          src={data.images[0]}
-          alt={data.images[0]}
-          className="img-thumbnail w-100"
-          style={{ minWidth: "80px", height: "80px" }}
-          width={50}
-          height={50}
-        />
-      </td>
+    <table className="table my-1">
+      <tbody>
+        <tr className="d-flex">
+          <td
+            className="d-flex mx-0"
+            style={{
+              overflow: "hidden",
+              justifyContent: "center",
+            }}
+          >
+            <Image
+              src={data.images[0]}
+              alt={data.images[0]}
+              className="img-thumbnail w-100"
+              width={100}
+              height={100}
+            />
+          </td>
+          <td
+            className="w-50 align-middle d-flex flex-direction-column justify-content-center"
+            style={{
+              flexDirection: "column",
+            }}
+          >
+            <h5>
+              <Link href={`/product/${data.id}`}>
+                <a className="text-black">{data.title}</a>
+              </Link>
+            </h5>
 
-      <td style={{ minWidth: "200px" }} className="w-50 align-middle">
-        <h5 className="text-capitalize text-secondary">
-          <Link href={`/product/${data.id}`}>
-            <a>{data.title}</a>
-          </Link>
-        </h5>
-
-        <h6 className="text-danger">${product.qty * product.price}</h6>
-        {data.stock > 0 ? (
-          <p className="mb-1 text-danger">In Stock: {data.stock}</p>
-        ) : (
-          <p className="mb-1 text-danger">Out Stock</p>
-        )}
-      </td>
-
-      <td className="align-middle" style={{ minWidth: "150px" }}>
-        <button
-          className="btn btn-outline-secondary"
-          disabled={product.qty === 1 ? true : false}
-          onClick={() => handleSub()}
-        >
-          {" "}
-          -{" "}
-        </button>
-
-        <span className="px-3">{product.qty}</span>
-
-        <button
-          className="btn btn-outline-secondary"
-          disabled={product.qty === data.stock ? true : false}
-          onClick={() => handleAdd()}
-        >
-          {" "}
-          +{" "}
-        </button>
-
-        <button
-          className="btn btn-outline-secondary"
-          onClick={() => handleDel()}
-        >
-          {" "}
-          x{" "}
-        </button>
-      </td>
-
-      <td
-        className="align-middle"
-        style={{ minWidth: "50px", cursor: "pointer" }}
-      >
-        <i
-          className="far fa-trash-alt text-danger"
-          aria-hidden="true"
-          style={{ fontSize: "18px" }}
-          data-toggle="modal"
-          data-target="#exampleModal"
-        ></i>
-      </td>
-    </tr>
+            <h6 className="text-danger">฿{product.price}</h6>
+            {/* {data.stock > 0 ? (
+              <p className="mb-1">In Stock: {data.stock}</p>
+            ) : (
+              <p className="mb-1">Out Stock</p>
+            )} */}
+          </td>
+          <td className={styles.group}>
+            <div>
+              <button
+                className="btn btn-outline-secondary"
+                disabled={product.qty === 1 ? true : false}
+                onClick={() => handleSub()}
+              >
+                {" "}
+                -{" "}
+              </button>
+              <span className="px-3">{product.qty}</span>
+              <button
+                className="btn btn-outline-secondary"
+                disabled={product.qty === data.stock ? true : false}
+                onClick={() => handleAdd()}
+              >
+                {" "}
+                +{" "}
+              </button>
+              <button
+                className={styles.btn_del + " btn"}
+                onClick={() => handleDel()}
+              >
+                {" "}
+                X{" "}
+              </button>
+            </div>
+            <div>
+              <h6 className="text-danger mb-0 mt-2">
+                Total: ฿{product.qty * product.price}
+              </h6>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   ) : (
-    <tr>
-      <td>Loading</td>
-    </tr>
+    <Loading />
   );
 };
 
