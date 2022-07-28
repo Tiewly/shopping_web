@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { getProductById } from "../pages/api/product";
-import { reactLocalStorage } from "reactjs-localstorage";
 import styles from "/styles/Cart.module.css";
 import Loading from "../components/Loading";
 
@@ -57,11 +56,6 @@ const CartItem: React.FC<CartItemProps> = ({
             </h5>
 
             <h6 className="text-danger">฿{product.price}</h6>
-            {/* {data.stock > 0 ? (
-              <p className="mb-1">In Stock: {data.stock}</p>
-            ) : (
-              <p className="mb-1">Out Stock</p>
-            )} */}
           </td>
           <td className={styles.group}>
             <div>

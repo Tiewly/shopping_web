@@ -1,5 +1,5 @@
 import Head from "next/head";
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { getProductById } from "../api/product";
 import Image from "next/image";
@@ -20,7 +20,6 @@ const DetailProduct = () => {
         <title>Detail Product</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* <p>Post: {JSON.stringify(data)}</p> */}
       <div className="mt-block container-md">
         {data ? (
           <div key={data.id} className="row d-flex flex-wrap mx-2">
@@ -39,7 +38,6 @@ const DetailProduct = () => {
               <h3 className="card-title text-uppercase mb-2">{data.title}</h3>
               <div className="d-flex justify-content-between align-items-center">
                 <h5 className="text-danger mt-1">฿{data.price}</h5>
-                {/* <p className="text-danger mb-0 mx-2">In stock: {data.stock}</p> */}
               </div>
               <p>{data.description}</p>
               <p>

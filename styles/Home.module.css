@@ -1,4 +1,4 @@
-/* product page */
+/*------ product page ------*/
 .products {
   display: flex;
   flex-direction: row;
@@ -21,23 +21,19 @@
   transition: color 0.15s ease, border-color 0.15s ease;
   max-width: 300px;
 }
-
 .card:hover,
 .card:focus,
 .card:active {
   color: #000;
   border-color: #0070f3;
 }
-
 .card h2 {
   margin: 0 0 1rem 0;
   font-size: 1.5rem;
 }
-
 .img_product {
   text-align: center;
 }
-
 .card_title {
   margin-bottom: var(--bs-card-title-spacer-y);
   word-wrap: break-word;
@@ -48,7 +44,6 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
 }
-
 .description {
   display: inline-block;
   word-wrap: break-word;
@@ -60,7 +55,7 @@
   -webkit-line-clamp: 2;
 }
 
-/* modal */
+/*------ modal ------*/
 .card_modal {
   width: 100%;
   height: auto;
@@ -70,7 +65,6 @@
   flex-direction: column;
   justify-content: center;
 }
-
 .btn_div {
   display: flex;
   justify-content: space-evenly;

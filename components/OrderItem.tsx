@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { getProductById } from "../pages/api/product";
-import { reactLocalStorage } from "reactjs-localstorage";
 import Loading from "../components/Loading";
 
 interface CartItemProps {
@@ -57,8 +56,8 @@ const OrderItem: React.FC<CartItemProps> = ({ product }) => {
             className="d-flex justify-content-center align-items-center"
             style={{ flexDirection: "column" }}
           >
-            <i className="bi bi bi-bag-check-fill fs-3 text-success"></i>Order
-            preparation
+            <i className="bi bi bi-bag-check-fill fs-3 text-success"></i>
+            Order preparation
           </td>
         </tr>
       </tbody>

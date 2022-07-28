@@ -7,25 +7,24 @@
   flex-direction: column;
   justify-content: center;
 }
-
 .btn_group {
   display: flex;
   align-items: flex-end;
   flex-direction: column;
   justify-content: center;
 }
-
 .btn_del,
 .btn_del:hover {
   background-color: #c41c21;
   color: #fff;
   margin-left: 1rem;
 }
-/* order card */
+
+/*------ order card ------*/
 .card_custumer {
   padding: 1rem;
   background: #212529;
-  /* border-radius: 10px; */
+  height: 28rem;
 }
 .card_custumer label,
 .card_custumer h2,
@@ -33,8 +32,12 @@
   color: #fff;
   text-transform: uppercase;
 }
-
 .card_custumer h6 {
   color: #fff;
   text-transform: none;
+}
+.text_contact {
+  display: flex;
+  justify-content: space-between;
+  text-transform: uppercase;
 }

@@ -24,11 +24,11 @@ a {
     background: black;
   }
 }
-
 .mt-block {
   margin: 95px 20px;
 }
-/* navbar */
+
+/*------ navbar ------*/
 .navbar-fixed {
   position: fixed !important;
   top: 0;
@@ -44,14 +44,14 @@ a {
 .logo i {
   cursor: pointer;
 }
-
 .icon-nav {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-left: 1rem;
 }
-/* carousel */
+
+/*------ carousel ------*/
 .carousel-size {
   width: 100%;
   text-align: center;
@@ -59,7 +59,7 @@ a {
   margin: 3rem 0 0 0;
 }
 
-/* loaging */
+/*------ loaging ------*/
 @keyframes ldio-mavlbdb624 {
   0% {
     transform: rotate(0);
@@ -82,7 +82,6 @@ a {
   border-color: #1d3f72 transparent #1d3f72 transparent;
   animation: ldio-mavlbdb624 1s linear infinite;
 }
-
 .ldio-mavlbdb624 > div:nth-child(2),
 .ldio-mavlbdb624 > div:nth-child(4) {
   width: 108px;
@@ -121,7 +120,6 @@ a {
   top: 48px;
   box-shadow: 128px 0 0 0 #1d3f72;
 }
-
 .ldio-mavlbdb624 > div:nth-child(4) {
   border-color: transparent;
 }

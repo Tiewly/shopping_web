@@ -1,16 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Head from "next/head";
 import Link from "next/link";
 
 export default function Header() {
   return (
     <>
-      <Head>
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
-        ></link>
-      </Head>
       <nav
         className="navbar navbar-dark bg-dark navbar-fixed"
         style={{ zIndex: "3" }}
