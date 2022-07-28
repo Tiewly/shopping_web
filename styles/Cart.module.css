@@ -1,117 +1,40 @@
-.container {
-  padding: 50px;
+.group {
+  vertical-align: middle !important;
+  text-align: center;
+  padding: 0;
   display: flex;
-}
-
-.left {
-  flex: 2;
-}
-
-.right {
-  flex: 1;
-}
-
-.imgContainer {
-  width: 100px;
-  height: 100px;
-  position: relative;
-}
-
-.table {
-  width: 100%;
-  border-spacing: 20px;
-}
-
-.name {
-  font-weight: 500;
-  color: #d1411e;
-  font-size: 18px;
-}
-
-.total {
-  font-weight: 500;
-  font-size: 18px;
-}
-
-.wrapper {
-  width: 90%;
-  max-height: 300px;
-  background-color: #333;
-  padding: 50px;
-  padding-top: 10px;
-  display: flex;
+  align-items: flex-end;
   flex-direction: column;
-  justify-content: space-between;
-  color: white;
+  justify-content: center;
 }
 
-.totalTextTitle {
-  margin-right: 10px;
+.btn_group {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.button {
-  height: 30px;
-  color: #d1411e;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 20px;
+.btn_del,
+.btn_del:hover {
+  background-color: #c41c21;
+  color: #fff;
+  margin-left: 1rem;
+}
+/* order card */
+.card_custumer {
+  padding: 1rem;
+  background: #212529;
+  /* border-radius: 10px; */
+}
+.card_custumer label,
+.card_custumer h2,
+.card_custumer h3 {
+  color: #fff;
+  text-transform: uppercase;
 }
 
-@media screen and (max-width: 480px) {
-  .container {
-    flex-direction: column;
-    padding: 20px;
-  }
-
-  .table {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .trTitle {
-    display: none;
-  }
-
-  .tr {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-
-  .imgContainer {
-    width: 35vw;
-    height: 35vw;
-  }
-
-  .name,
-  .total {
-    font-size: 24px;
-  }
-
-  .extras,
-  .price,
-  .quantity {
-    font-size: 22px;
-  }
-
-  .price::before {
-    content: "Price: ";
-    font-weight: 500;
-  }
-  .quantity::before {
-    content: "Quantity: ";
-    font-weight: 500;
-  }
-  .total::before {
-    content: "Total: ";
-    font-weight: 500;
-  }
-
-  .wrapper {
-    width: 100%;
-  }
+.card_custumer h6 {
+  color: #fff;
+  text-transform: none;
 }
